@@ -9,8 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import dj_database_url
-import os
 
 from pathlib import Path
 
@@ -25,10 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o-5k9qkvnj$6$o!(cq2bft%z&kgq%t=!@p^8b7nziqhzl)ls#f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = True
 
-
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -88,19 +85,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-DATABASES["default"] = dj_database_url.parse("postgres://john_8a0z_user:DeOBLScwsCuHYvCQqiZryNlxrgqLpTGb@dpg-cpm7mgtds78s738vajt0-a.oregon-postgres.render.com/john_8a0z")
-
-#
-
 
 
 # Password validation
